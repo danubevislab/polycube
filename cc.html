@@ -321,7 +321,7 @@
 
             //animation on load
 
-            AN()
+            SI()
         }
 
         tempRange(data, geoMap);
@@ -570,34 +570,6 @@
         imgDetails.innerHTML = ""
     };
 
-
-
-    //loop test
-    let interval = null;
-    let d = 0;
-    let finish = false;
-
-    startBTN.onclick = function () {
-
-        if (finish){d = 0}
-
-        interval = setInterval(function () {
-            if(d < 20){
-//                console.log(i++);  // this is inside your loop
-                console.log("Saminu");  // this is inside your loop
-
-                if(d > 19){
-                    finish = true;
-                    console.log(finish);
-                }
-            }
-        }, 500);
-    };
-
-
-    stopBTN.onclick = function () {
-        clearInterval(interval);
-    };
 
 </script>
 

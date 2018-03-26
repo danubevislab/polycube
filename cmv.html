@@ -1,42 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--<script src="//threejs.org/build/three.min.js"></script>-->
     <script src="lib/three.js/threejs91.min.js"></script>
-    <script src="lib/three.js/CombinedCamera.js"></script>
     <script src="lib/three.js/OrbitControls.js"></script>
     <script src="lib/three.js/tween.js"></script>
     <script src="lib/three.js/CSS3DRenderer.js"></script>
-    <!--<script src="//threejs.org/examples/js/renderers/CSS3DRenderer.js"></script>-->
 
     <script src="lib/three.js/projector.js"></script>
     <script src="lib/three.js/SVGRenderer.js"></script>
+    <script type='text/javascript' src='lib/dat.gui/dat.gui.min.js'></script>
+    <script src="https://cdn.rawgit.com/lingtalfi/simpledrag/master/simpledrag.js"></script>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/split.css">
     <link rel="stylesheet" class="stylesheet" id="blue" href="">
-    <style>
-        .select {
-            display: none;
-        }
-
-        /*canvas over html*/
-
-        /*.green_BG {*/
-        /*!*background-color: #426403 !important;*!*/
-        /*!*background-color: #0075c8 !important;*!*/
-        /*background-color: #c83409 !important;*/
-        /*!*fill: #426403 !important;*!*/
-        /*!*fill: #0075c8 !important;*!*/
-        /*fill: #c83409 !important;*/
-        /*}*/
-
-        /*!*timeline labels*!*/
-        /*.tick text {*/
-        /*!*fill: #426403;*!*/
-        /*fill: #c83409;*/
-        /*}*/
-
-
-    </style>
 </head>
 <body>
 
@@ -52,92 +28,77 @@
     <div id="caption"></div>
 </div>
 
+<div class="panes-container">
+    <div class="left-pane" id="left-pane">
 
-<a class="button" type="button" href="index.html">
-    Back Home
-</a>
-<!--<a class="button" type="button" onclick="STC()">-->
-    <!--space-time cube-->
-<!--</a>-->
-
-<!--<button class="button" type="button"-->
+        <!--<button class="button" type="button" onclick="polyCube.default()">-->
+        <!--space-time cube-->
+        <!--</button>-->
+        <!--<button class="button" type="button"-->
         <!--onclick="-->
-        <!--SI()"> superimposition-->
-<!--</button>-->
+        <!--polyCube.superImpose();-->
+        <!--"> superimposition-->
+        <!--</button>-->
 
-<!--<button class="button" type="button"-->
-        <!--onclick="AN()">-->
-    <!--Animation-->
-<!--</button>-->
+        <!--<button class="button" type="button"-->
+        <!--onclick="SI()">-->
+        <!--juxtaposition-->
+        <!--</button>-->
+    </div>
+    <div class="panes-separator" id="panes-separator"></div>
+    <div class="right-pane" id="right-pane">
 
-<!--<a class="button" target="_blank" href="split.html">-->
-    <!--Split View-->
-<!--</a>-->
+        <p id="textTitle">i</p>
+        <a style="cursor: pointer" class="close-info">&times;</a>
 
-<a target="_blank" id="searchLink"><p id="textTitle">i</p></a>
+        <img id="dataImage" src="#" alt="" width="300" height="200">
 
-<a style="cursor: pointer" class="close-info">&times;</a>
+        <div style="top: 22%; position: absolute;">
 
-<!--<img id="dataImage" src="#">-->
+            <div id="dotPlot"></div>
+            <div id="timeLine" style="
+        -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    margin-top: 40px;
+    /*left:auto;*/
+    /*top: 320px;*/
+    /*right: 480px;*/
+    /*position: relative;*/
 
-<!-- Trigger the Modal -->
-<img id="dataImage" src="#" alt="" width="300" height="200">
+    .handle .handle--s{
+    cursor: ew-resize;
+    }
 
-<div id="timeLine"></div>
+    .handle .handle--s{
+    cursor: ew-resize;
+    }
 
-<div id="dotPlot"></div>
+"></div>
+        </div>
+
+        <!--<img id="dataImage" src="#">-->
+        <!-- Trigger the Modal -->
+    </div>
+    <div class="controls-panel" id="controls-panel">
+    </div>
+</div>
 
 <br>
 <script src="lib/d3/d3.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="lib/d3/topojson.min.js"></script>
-<script type='text/javascript' src='lib/dat.gui/dat.gui.min.js'></script>
 <script src="js/core.js"></script>
-<!--<script src="js/segcolor.js"></script>-->
-<script src="js/seg.js"></script>
-<script src="js/vis/brushSegloop.js"></script>
-<!--<script src="js/vis/dotPlot.js"></script>-->
+<script src="js/split.js"></script>
+<script src="js/vis/brushSeg2.js"></script>
+<script src="js/vis/dotPlot.js"></script>
 
 <script>
 
-    function JP() {
-        polyCube.juxstaPose();
-    }
-
     function SI() {
-        // test color
-        d3.selectAll(".pointCloud")
-            .classed("green_BG", false);
-
-        d3.selectAll(".tick")
-            .classed("notick", true)
-            .classed("tick", false);
-
-        polyCube.superImpose();
-    }
-
-    function STC() {
-        d3.selectAll(".pointCloud")
-            .classed("green_BG", true);
-
-        d3.selectAll(".notick")
-            .classed("tick", true)
-            .classed("notick", false);
-
-        polyCube.default();
-    }
-
-    function AN() {
-        // test color
-
-        d3.selectAll(".animateButton")
-            .classed("hide", false);
-
-        polyCube.superImpose();
-
-        window.layout = "AN";
-
-
+        polyCube.juxstaPose();
     }
 
     /**Merge the cut section into a mega structure
@@ -315,13 +276,10 @@
 
             //Draw
             polyCube.drawElements(newData, geoMap);
+            polyCube.superImpose();
             polyCube.render();
             polyCube.animate();
             window.addEventListener('resize', polyCube.onWindowResize, false);
-
-            //animation on load
-
-            AN()
         }
 
         tempRange(data, geoMap);
@@ -334,6 +292,7 @@
             }
             return counts;
         }
+
 
         /**
          * Toggle PointCloud Data UI
@@ -354,19 +313,14 @@
             nodeSize: 3,
             colorScale: true,
             BG: "#cac6ba",
-            dataColor: "#462015",
+            dataColor: "#c83409",
 //            mapColor: "#040404",
 //            mapColor: "#dec987",
             mapColor: "#ffffff",
             invert: false,
-            dataCategory: []
+//            projection: 400,
+            dataCategory: ['pizza', 'chrome', 'hooray']
         };
-        /**
-         * Data UI Controls
-         * ref: http://learningthreejs.com/blog/2011/08/14/dat-gui-simple-ui-for-demos/
-         */
-        let gui = new dat.GUI({});
-//        gui.remember(params);
 
         d3.select("body")
             .style("background-color", params.BG);
@@ -380,41 +334,50 @@
         d3.selectAll(".screen_dots")
             .style("fill", "rgb(16, 49, 21)");
 
-//        d3.selectAll(".elements_child").selectAll(".subunit")
-//            .style("fill", "black");
+        d3.selectAll(".elements_child").selectAll(".subunit")
+            .style("fill", "black");
 
-        d3.selectAll(".animateButton")
-            .classed("hide", false);
+//        Theme Color
 
+//        d3.selectAll(".pointCloud")
+//            .classed("green_BG", true);
 
-//         Theme Color
         d3.selectAll(".pointCloud")
-            .classed("green_BG", true);
+            .style("background", params.dataColor);
 
         d3.selectAll(".boundary")
             .attr("fill", params.mapColor);
 
-        //themes
-//        document.getElementById("blue").disabled = true;
+//        d3.selectAll(".handle .handle--n")
+//            .attr("cursor", "ew-resize");
+//
+//        d3.selectAll(".handle .handle--s")
+//            .attr("cursor", "ew-resize");
 
-//        d3.selectAll(".pointCloud")
-//            .classed("green_BG", true);
-//        gui.add(params, 'Project').onFinishChange(function () {
-//        }).name("PolyCube ©");
+
+        /**
+         * Data UI Controls
+         * ref: http://learningthreejs.com/blog/2011/08/14/dat-gui-simple-ui-for-demos/
+         */
+        let gui = new dat.GUI();
+//        gui.remember(params);
+
+        gui.add(params, 'Project').onFinishChange(function () {
+        }).name("PolyCube ©");
 
         let theme = gui.addFolder('Theme');
 
         theme.add(params, 'dataCategory', ['default','blue', 'black', 'white']).onChange(d => {
-//            document.getElementById(d).disabled = false;
-//            document.getElementsByClassName("stylesheet").disabled = false;
             d3.selectAll(".stylesheet").attr("href", "css/" + d + ".css");
         }).name("Theme");
+
 
         theme.addColor(params, 'BG').onChange(d => {
             d3.select("body")
                 .style("background-color", d)
             ;
         });
+
 
         theme.addColor(params, 'dataColor').onChange(d => {
 
@@ -440,28 +403,21 @@
 
         });
 
+
         theme.add(params, "invert").onFinishChange(d => {
             if (d) {
-//                d3.select("body")
-//                    .style("filter", "invert(100%)")
-
-                document.getElementById("styles-animations").disabled = false;
-
+                d3.select("body")
+                    .style("filter", "invert(100%)")
             } else {
-
-//                d3.select("body")
-//                    .style("filter", "invert(0%)")
-
-                document.getElementById("blue").disabled = true;
+                d3.select("body")
+                    .style("filter", "invert(0%)")
             }
-        }).name("Toggle Theme");
+        });
 
         let Time = gui.addFolder("Time");
 //        Time.add(params, 'Morphing').min(-250).max(250).onChange(function () {
 //            var value = params.Morphing;
-//            if (value) {
-//                polyCube.morphing({axis: +value})
-//            }
+//            polyCube.morphing({axis: +value})
 //        });
         Time.add(params, "colorScale").onChange(function () {
             var value = params.colorScale;
@@ -507,6 +463,12 @@
             }
         });
 
+//        Space.add(params, "projection").min(10).max(2000).step(10).onFinishChange(function () {
+//            let value = params.projection;
+//            console.log(value);
+//        polyCube.updateMap(+value, window.geoMapData);
+//        });
+
         let Data = gui.addFolder("Data");
         Data.add(params, "showData").onChange(function () {
             var value = params.showData;
@@ -524,25 +486,22 @@
 
         }).name("Show PC Data");
 
-
     }
 
 </script>
+
 
 <script>
     // Get the modal
     let modal = document.getElementById('myModal');
     let threejsBox = document.getElementById('CSSLayoutBox');
 
+
     // Get the image and insert it inside the modal - use its "alt" text as a caption
     let img = document.getElementById('dataImage');
     let modalImg = document.getElementById("img01");
     let captionText = document.getElementById("caption");
     let imgDetails = document.getElementById("textTitle");
-
-    let startBTN= document.getElementById("startBTN");
-    let stopBTN = document.getElementById("stopBTN");
-
 
     img.onclick = function () {
         modal.style.display = "block";
@@ -571,33 +530,53 @@
     };
 
 
-
-    //loop test
-    let interval = null;
-    let d = 0;
-    let finish = false;
-
-    startBTN.onclick = function () {
-
-        if (finish){d = 0}
-
-        interval = setInterval(function () {
-            if(d < 20){
-//                console.log(i++);  // this is inside your loop
-                console.log("Saminu");  // this is inside your loop
-
-                if(d > 19){
-                    finish = true;
-                    console.log(finish);
-                }
-            }
-        }, 500);
-    };
+</script>
 
 
-    stopBTN.onclick = function () {
-        clearInterval(interval);
-    };
+<script>
+
+
+    var leftPane = document.getElementById('left-pane');
+    var rightPane = document.getElementById('right-pane');
+    var paneSep = document.getElementById('panes-separator');
+
+    // The script below constrains the target to move horizontally between a left and a right virtual boundaries.
+    // - the left limit is positioned at 10% of the screen width
+    // - the right limit is positioned at 90% of the screen width
+    var leftLimit = 40;
+    var rightLimit = 60;
+
+
+    paneSep.sdrag(function (el, pageX, startX, pageY, startY, fix) {
+
+        fix.skipX = true;
+
+        if (pageX < window.innerWidth * leftLimit / 100) {
+            pageX = window.innerWidth * leftLimit / 100;
+            fix.pageX = pageX;
+        }
+        if (pageX > window.innerWidth * rightLimit / 100) {
+            pageX = window.innerWidth * rightLimit / 100;
+            fix.pageX = pageX;
+        }
+
+        var cur = pageX / window.innerWidth * 100;
+        if (cur < 0) {
+            cur = 0;
+        }
+        if (cur > window.innerWidth) {
+            cur = window.innerWidth;
+        }
+
+
+        var right = (100 - cur - 2);
+        leftPane.style.width = cur + '%';
+        rightPane.style.width = right + '%';
+
+        polyCube.onWindowResize();
+
+    }, null, 'horizontal');
+
 
 </script>
 
