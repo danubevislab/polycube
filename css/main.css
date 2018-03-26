@@ -1,0 +1,547 @@
+
+.elements {
+    pointer-events: none;
+    border: 1px solid rgb(115, 115, 115);
+}
+
+body {
+    filter: invert(10%);
+    /*background-color: #000;*/
+
+    /*background: linear-gradient(to bottom, #020111 85%,#191621 100%);*/
+    /*background: linear-gradient(to bottom, #2d91c2 0%,#1e528e 100%);*/
+    /*background: linear-gradient(to bottom, #000000 50%, #00155c 100%);*/
+
+    background-color: black;
+    /*background-image:*/
+    /*radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),*/
+    /*radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),*/
+    /*radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),*/
+    /*radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);*/
+    /*background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;*/
+    /*background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;*/
+
+    /*overflow: hidden;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 100% 1000px;*/
+
+    overflow: hidden;
+    margin: 0;
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+canvas {
+    background: transparent;
+    /*canvas over html*/
+    pointer-events:none;
+    z-index: 9;
+
+}
+
+.elements_child {
+    background-color: #2f2f2f;
+}
+
+.subunit {
+    fill: #dcdcdc;
+}
+
+.place,
+.place-label {
+    fill: #353636;
+}
+
+text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    pointer-events: none;
+}
+
+.subunit-boundary {
+    fill: none;
+    /*stroke: #777;*/
+    stroke: #666666;
+    /*stroke-width: 1px;*/
+    stroke-dasharray: 2, 2;
+    stroke-linejoin: round;
+}
+
+.subunit-label {
+    /*fill: black;*/
+    fill: #181818;
+    fill-opacity: 1;
+    font-size: 5px;
+    /*font-weight: 300;*/
+    text-anchor: middle;
+}
+
+.subunit_points {
+    cursor: pointer;
+    z-index: 999;
+    pointer-events: all;
+}
+
+.boundary {
+    /*fill: #040404;*/
+    /*fill: #cccccc;*/
+    /*stroke: black;*/
+    stroke: #8e8e8e;
+    stroke-width: 0.5px;
+}
+
+.hide {
+    /*opacity: 0;*/
+    display: none;
+}
+
+.highlight{
+    width: 15px !important;
+    height: 15px !important;
+    /*transform: scale(2);*/
+    background: #0273d4 !important;
+    /*z-index: -1;*/
+    pointer-events: none;
+
+    stroke: #0273d4;
+    stroke-width:5px;
+    /*stroke-dasharray: 2,2;*/
+    /*stroke-linejoin: round;*/
+
+    /*-webkit-filter: drop-shadow( -5px -5px 5px #0273d4 );*/
+    /*filter: drop-shadow( -5px -5px 5px #0273d4 );*/
+}
+
+
+.highlightDot{
+    fill: #0273d4 !important;
+}
+
+.highlightDot{
+    fill: #462015 !important;
+}
+
+.noHighlight{
+
+}
+
+/*.hide, .leaflet-pane .leaflet-tile-pane{*/
+/*color: #18b23d;*/
+/*}*/
+
+.side {
+    display: none;
+}
+
+/*input*/
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 2px;
+    background: #FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: #130C0E;
+    position: relative;
+    border: 3px solid #FFF;
+    z-index: 2;
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
+
+/*time slider*/
+.axis--grid .domain {
+    /*fill: #ddd;*/
+    stroke: none;
+}
+
+.axis--x .domain,
+.axis--grid .tick line {
+    stroke: #353636;
+}
+
+/*.axis--y .domain,*/
+.tick text {
+    /*fill: #EDCA3A;*/
+    /*fill: #462015;*/
+    /*fill: #c83409;*/
+    fill: #2d2d2d;
+}
+
+/*.axis--y .domain,*/
+.notick text {
+    /*fill: #353636 !important;*/
+    stroke: #525252;
+    stroke-width: 0.3px;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+
+.axis--grid .tick--minor line {
+    stroke-opacity: .5;
+}
+
+.axis2,
+.axis--y2 line {
+    stroke: #8a8a8a;
+    stroke-opacity: .5;
+}
+
+.axis,
+.axis--chart {
+    /*fill: #3f3f3f;*/
+    fill: #353636;
+    stroke-width: 0;
+}
+
+/*.stations, .stations svg {*/
+/*position: absolute;*/
+/*}*/
+
+/*.stations svg {*/
+/*width: 60px;*/
+/*height: 20px;*/
+/*padding-right: 100px;*/
+/*font: 10px sans-serif;*/
+/*}*/
+
+/*.stations circle {*/
+/*fill: brown;*/
+/*stroke: black;*/
+/*stroke-width: 1.5px;*/
+/*}*/
+
+.layer, .layer svg {
+    position: absolute;
+}
+
+.layer svg {
+    width: 60px;
+    height: 60px;
+    padding-right: 100px;
+    font: 10px sans-serif;
+}
+
+button.button  {
+    background-color: #999a9a; /* Green */
+    border: none;
+    color: white;
+    width: 150px;
+    /*padding: 15px 32px;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*display: inline-block;*/
+    font-size: 12px;
+
+    position: relative;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+    display: inline-block;
+    text-align: center;
+    text-decoration:none;
+}
+
+
+a.button  {
+    background-color: #999a9a; /* Green */
+    border: none;
+    color: white;
+    width: 150px;
+    /*padding: 15px 32px;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*display: inline-block;*/
+    font-size: 12px;
+
+    position: relative;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+    display: inline-block;
+    text-align: center;
+    text-decoration:none;
+}
+
+#textTitle {
+    color: #7b7b7b;
+}
+
+#textTitle, .date, .location {
+    font-size: smaller;
+}
+
+#searchLink {
+    /*font-size: small;*/
+}
+
+#textTitle {
+    /*width: 200px;*/
+    /*color: white;*/
+    position: relative;
+    top: 180px;
+    /*left: 60px;*/
+    z-index: 99;
+    margin-bottom: 40px;
+    float: right;
+    margin-right: 15px;
+    overflow-x: hidden;
+    max-width: 246px;
+    width: 246px;
+    text-align: left;
+}
+
+#dataImage {
+    /*width: 350px;*/
+    position: absolute;
+    top: 280px;
+    right: 15px;
+    z-index: 999;
+    float: right;
+    /*margin-right: 15px;*/
+    overflow-x: hidden;
+    max-width: 246px;
+    height: auto;
+}
+
+.close-info{
+    /*width: 200px;*/
+    /*color: white;*/
+    position: relative;
+    top: 180px;
+    /*left: 60px;*/
+    z-index: 99;
+    margin-bottom: 40px;
+    float: right;
+    margin-right: 10px;
+    overflow-x: hidden;
+    /*max-width: 246px;*/
+    /*width: 246px;*/
+    text-align: left;
+    color: #7b7b7b;
+}
+
+.segLabel {
+    color: #7b7b7b;
+}
+
+.pointCloud {
+    /*height: 2px !important;*/
+    /*width: 2px !important;*/
+    border-radius: 50%;
+    /*border: solid black 0.5px;*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+    /*font-size: 500%;*/
+    position: relative;
+    /*box-shadow: inset -10px -10px 100px #000, 10px 10px 20px green, inset 0px 0px 10px green;*/
+
+    /*-webkit-box-shadow:0 0 5px blue;*/
+    /*-moz-box-shadow: 0 0 5px blue;*/
+    /*box-shadow:0 0 2px #1891ff;*/
+
+    /*display: inline-block;*/
+    /*margin: 5%;*/
+    background-color: #00b438;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/*.pointCloud::after {*/
+/*background-color: rgba(255, 255, 255, 0.3);*/
+/*content: '';*/
+/*height: 45%;*/
+/*width: 12%;*/
+/*position: absolute;*/
+/*top: 4%;*/
+/*left: 15%;*/
+/*border-radius: 50%;*/
+/*transform: rotate(40deg);*/
+/*}*/
+
+.green {
+    background-color: green;
+}
+
+.green_BG {
+    /*background-color: #EDCA3A !important;*/
+    /*background-color: #462015 !important;*/
+    background-color: #c83409 !important;
+    /*fill: #EDCA3A !important;*/
+    /*fill: #462015 !important;*/
+    fill: #c83409 !important;
+}
+
+.dotplot{
+    /*fill: #EDCA3A;*/
+    /*fill: #886855;*/
+    fill: #c83409;
+    /*fill: #d37948;*/
+}
+
+.no_BG {
+    /*background-color: #00b438 !important;*/
+    background-color: #EDCA3A !important;
+}
+
+.bar {
+    fill: steelblue;
+}
+
+.select {
+    position: absolute;
+    top: 2%;
+    /*left: 100%;*/
+}
+
+#timeLine {
+    top: 30px;
+    left: -30px;
+}
+
+.timelineTick {
+    fill: white;
+}
+
+/*modal*/
+
+/* Style the Image Used to Trigger the Modal */
+#dataImage {
+    /*border-radius: 5px;*/
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#dataImage:hover {
+    opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999999; /* Sit on top */
+    padding-top: 30px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    /*width: 80%;*/
+    max-width: 700px;
+    max-height: 800px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/*dotplot*/
+
+.enter {
+    fill: #EDCA3A;
+}
+
+
+.update {
+    fill: #1FBAD6;
+}
+
+.exit {
+    fill: #F25754;
+}
+
+.selected {
+    fill: #E6B0F1;
+}
+
+div.tooltip {
+    color: black;
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    font-family: Futura;
+    font: 12px sans-serif;
+    background: #FCB8C3FF;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.dotplot text {
+    fill: #fffef2
+}
