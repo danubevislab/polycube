@@ -65,21 +65,21 @@
     Back Home
 </a>
 <!--<a class="button" type="button" onclick="STC()">-->
-    <!--space-time cube-->
+<!--space-time cube-->
 <!--</a>-->
 
 <!--<button class="button" type="button"-->
-        <!--onclick="-->
-        <!--SI()"> superimposition-->
+<!--onclick="-->
+<!--SI()"> superimposition-->
 <!--</button>-->
 
 <!--<button class="button" type="button"-->
-        <!--onclick="AN()">-->
-    <!--Animation-->
+<!--onclick="AN()">-->
+<!--Animation-->
 <!--</button>-->
 
 <!--<a class="button" target="_blank" href="split.html">-->
-    <!--Split View-->
+<!--Split View-->
 <!--</a>-->
 
 <a target="_blank" id="searchLink"><p id="textTitle">i</p></a>
@@ -329,10 +329,17 @@
 
             //animation on load
 
-            AN()
+            AN();
         }
 
         tempRange(data, geoMap);
+
+        // show anibutton after 1 second
+        setTimeout(function () {
+            d3.selectAll(".animateButton")
+                .classed("hide", false);
+
+        }, 1000);
 
         function count(data) {
 //            console.log(data)
@@ -391,10 +398,6 @@
 //        d3.selectAll(".elements_child").selectAll(".subunit")
 //            .style("fill", "black");
 
-        d3.selectAll(".animateButton")
-            .classed("hide", false);
-
-
 //         Theme Color
         d3.selectAll(".pointCloud")
             .classed("green_BG", true);
@@ -412,7 +415,7 @@
 
         let theme = gui.addFolder('Theme');
 
-        theme.add(params, 'dataCategory', ['default','blue', 'black', 'white']).onChange(d => {
+        theme.add(params, 'dataCategory', ['default', 'blue', 'black', 'white']).onChange(d => {
 //            document.getElementById(d).disabled = false;
 //            document.getElementsByClassName("stylesheet").disabled = false;
             d3.selectAll(".stylesheet").attr("href", "css/" + d + ".css");
@@ -548,7 +551,7 @@
     let captionText = document.getElementById("caption");
     let imgDetails = document.getElementById("textTitle");
 
-    let startBTN= document.getElementById("startBTN");
+    let startBTN = document.getElementById("startBTN");
     let stopBTN = document.getElementById("stopBTN");
 
 
