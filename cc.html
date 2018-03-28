@@ -18,6 +18,9 @@
             display: none;
         }
 
+        .tick text{
+            /*fill: ;*/
+        }
         /*canvas over html*/
 
         /*.green_BG {*/
@@ -319,9 +322,8 @@
             polyCube.animate();
             window.addEventListener('resize', polyCube.onWindowResize, false);
 
-            //animation on load
-
-            SI()
+            //CC on load
+            polyCube.superImpose();
         }
 
         tempRange(data, geoMap);
@@ -387,9 +389,15 @@
             .classed("hide", false);
 
 
-//         Theme Color
-        d3.selectAll(".pointCloud")
-            .classed("green_BG", true);
+////         CC Color
+//        d3.selectAll(".pointCloud")
+//            .classed("green_BG", false);
+//
+////
+//        d3.selectAll(".tick")
+//            .classed("tick", false)
+//            .classed("notick", true);
+
 
         d3.selectAll(".boundary")
             .attr("fill", params.mapColor);
