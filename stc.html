@@ -62,7 +62,7 @@
 
 
 <a class="button" type="button" href="index.html">
-    Back Home
+    Back
 </a>
 <!--<a class="button" type="button" onclick="STC()">-->
     <!--space-time cube-->
@@ -417,7 +417,7 @@
             d3.select("body")
                 .style("background-color", d)
             ;
-        });
+        }).name("Background");
 
         theme.addColor(params, 'dataColor').onChange(d => {
 
@@ -443,53 +443,53 @@
 
         });
 
-        theme.add(params, "invert").onFinishChange(d => {
-            if (d) {
-//                d3.select("body")
-//                    .style("filter", "invert(100%)")
+//        theme.add(params, "invert").onFinishChange(d => {
+//            if (d) {
+////                d3.select("body")
+////                    .style("filter", "invert(100%)")
+//
+//                document.getElementById("styles-animations").disabled = false;
+//
+//            } else {
+//
+////                d3.select("body")
+////                    .style("filter", "invert(0%)")
+//
+//                document.getElementById("blue").disabled = true;
+//            }
+//        }).name("Toggle Theme");
 
-                document.getElementById("styles-animations").disabled = false;
-
-            } else {
-
-//                d3.select("body")
-//                    .style("filter", "invert(0%)")
-
-                document.getElementById("blue").disabled = true;
-            }
-        }).name("Toggle Theme");
-
-        let Time = gui.addFolder("Time");
+//        let Time = gui.addFolder("Time");
 //        Time.add(params, 'Morphing').min(-250).max(250).onChange(function () {
 //            var value = params.Morphing;
 //            if (value) {
 //                polyCube.morphing({axis: +value})
 //            }
 //        });
-        Time.add(params, "colorScale").onChange(function () {
-            var value = params.colorScale;
+//        Time.add(params, "colorScale").onChange(function () {
+//            var value = params.colorScale;
+//
+//            if (value) {
+//                //show green on pointCloud
+//
+//                d3.selectAll(".pointCloud")
+//                    .classed("green_BG", true);
+//
+//                d3.selectAll(".timelineTick")
+//                    .classed("green_BG", true)
+//
+//            } else {
+//                //show green on pointCloud
+//                d3.selectAll(".pointCloud")
+//                    .classed("green_BG", false);
+//
+//                d3.selectAll(".timelineTick")
+//                    .classed("green_BG", false);
+//            }
+//
+//        }).name("Time Colour");
 
-            if (value) {
-                //show green on pointCloud
-
-                d3.selectAll(".pointCloud")
-                    .classed("green_BG", true);
-
-                d3.selectAll(".timelineTick")
-                    .classed("green_BG", true)
-
-            } else {
-                //show green on pointCloud
-                d3.selectAll(".pointCloud")
-                    .classed("green_BG", false);
-
-                d3.selectAll(".timelineTick")
-                    .classed("green_BG", false);
-            }
-
-        }).name("Time Colour");
-
-        let Space = gui.addFolder("Space");
+        let Space = gui.addFolder("Object");
         Space.add(params, "nodeSize").min(0.01).max(80).onChange(function () {
             var value = params.nodeSize;
             d3.selectAll(".pointCloud")
@@ -510,22 +510,22 @@
             }
         });
 
-        let Data = gui.addFolder("Data");
-        Data.add(params, "showData").onChange(function () {
-            var value = params.showData;
-            if (value) {
-                d3.selectAll(".pointCloud")
-                    .classed("hide", false);
-                d3.selectAll(".leaflet-marker-icon")
-                    .classed("hide", false);
-            } else {
-                d3.selectAll(".pointCloud")
-                    .classed("hide", true);
-                d3.selectAll(".leaflet-marker-icon")
-                    .classed("hide", true);
-            }
-
-        }).name("Show PC Data");
+//        let Data = gui.addFolder("Data");
+//        Data.add(params, "showData").onChange(function () {
+//            var value = params.showData;
+//            if (value) {
+//                d3.selectAll(".pointCloud")
+//                    .classed("hide", false);
+//                d3.selectAll(".leaflet-marker-icon")
+//                    .classed("hide", false);
+//            } else {
+//                d3.selectAll(".pointCloud")
+//                    .classed("hide", true);
+//                d3.selectAll(".leaflet-marker-icon")
+//                    .classed("hide", true);
+//            }
+//
+//        }).name("Show PC Data");
 
 
     }
